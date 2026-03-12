@@ -5,56 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>اتصل بنا - Roblox</title>
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f7f7f7;
-        direction: rtl;
-        margin: 0;
-        padding: 0;
-    }
-    .container {
-        max-width: 500px;
-        margin: 50px auto;
-        background-color: #fff;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    h2 {
-        text-align: center;
-        margin-bottom: 20px;
-    }
-    label {
-        display: block;
-        margin-top: 15px;
-        font-weight: bold;
-    }
-    input, select, textarea, button {
-        width: 100%;
-        padding: 10px;
-        margin-top: 5px;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-        box-sizing: border-box;
-    }
-    textarea {
-        resize: none;
-        height: 100px;
-    }
-    button {
-        background-color: #808080;
-        color: #fff;
-        border: none;
-        margin-top: 20px;
-        cursor: pointer;
-    }
-    button:hover {
-        background-color: #555;
-    }
-    .required {
-        color: red;
-        font-size: 12px;
-    }
+    body { font-family: Arial, sans-serif; background-color: #f7f7f7; direction: rtl; margin: 0; padding: 0; }
+    .container { max-width: 500px; margin: 50px auto; background-color: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    h2 { text-align: center; margin-bottom: 20px; }
+    label { display: block; margin-top: 15px; font-weight: bold; }
+    input, select, textarea, button { width: 100%; padding: 10px; margin-top: 5px; border-radius: 5px; border: 1px solid #ccc; box-sizing: border-box; }
+    textarea { resize: none; height: 100px; }
+    button { background-color: #808080; color: #fff; border: none; margin-top: 20px; cursor: pointer; }
+    button:hover { background-color: #555; }
+    .required { color: red; font-size: 12px; }
 </style>
 </head>
 <body>
@@ -65,12 +24,15 @@
         <label>اسم المستخدم (اختياري)</label>
         <input type="text" placeholder="اسم المستخدم">
 
-        <label>الاسم الأول (اختياري)</label>
-        <input type="text" placeholder="الاسم الأول">
+        <label>الاسم الأول</label>
+        <input type="text" placeholder="الاسم الأول" required>
+
+        <label>الاسم الثاني</label>
+        <input type="text" placeholder="الاسم الثاني" required>
 
         <label>البريد الإلكتروني</label>
         <input type="email" placeholder="البريد الإلكتروني" required>
-        <div class="required">البريد الإلكتروني في مطلوب</div>
+        <div class="required">البريد الإلكتروني مطلوب</div>
 
         <label>تأكيد عنوان البريد الإلكتروني</label>
         <input type="email" placeholder="تأكيد البريد الإلكتروني" required>
@@ -80,13 +42,13 @@
             <option value="">اختر النوع (اختياري)</option>
             <option value="pc1">كمبيوتر (اختياري)</option>
             <option value="pc2">كمبيوتر محمول (اختياري)</option>
-            <option value="mobile1"> أندرويد (اختياري)</option>
-            <option value="mobile2"> iPhone (اختياري)</option>
+            <option value="mobile1">أندرويد (اختياري)</option>
+            <option value="mobile2">iPhone (اختياري)</option>
             <option value="tablet1">تابلت أندرويد (اختياري)</option>
             <option value="tablet2">iPad</option>
             <option value="console1">Xbox</option>
             <option value="console2">PlayStation(اختياري)</option>
-            <option value="vr"> Meta Quest </option>
+            <option value="vr">Meta Quest</option>
             <option value="other">أخرى (اختياري)</option>
         </select>
 
@@ -102,20 +64,38 @@
             <option value="dmca">DMCA (اختياري)</option>
             <option value="gift">بطاقة الهدايا (اختياري)</option>
             <option value="ideas">أفكار واقتراحات (اختياري)</option>
-            <option value="other_help">نصب ممتلكات </option>
+            <option value="other_help">نصب ممتلكات</option>
         </select>
 
         <label>يرجى وصف مشكلتك</label>
-        <textarea placeholder="ما هي المشكله التي تواجهها"></textarea>
+        <textarea placeholder="ما هي المشكلة التي تواجهها"></textarea>
 
         <button type="submit">متابعة</button>
     </form>
 </div>
 
+<!-- إضافة EmailJS -->
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 <script>
+(function(){ emailjs.init('YOUR_USER_ID'); })(); // ضع هنا User ID من EmailJS
+
 document.getElementById('contactForm').addEventListener('submit', function(e){
     e.preventDefault();
-    alert('تم إرسال النموذج بنجاح!');
+
+    // جلب القيم
+    const firstName = this.querySelector('input[placeholder="الاسم الأول"]').value;
+    const lastName = this.querySelector('input[placeholder="الاسم الثاني"]').value;
+
+    // إرسال الإيميل
+    emailjs.send('YOUR_SERVICE_ID','YOUR_TEMPLATE_ID',{
+        to_email: 'battal.alzahrani23@gmail.com',
+        first_name: firstName,
+        last_name: lastName
+    }).then(function(){
+        alert('تم إرسال الاسم الأول والثاني إلى بريدك الإلكتروني!');
+    }, function(error){
+        alert('حدث خطأ: ' + JSON.stringify(error));
+    });
 });
 </script>
 
