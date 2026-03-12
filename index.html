@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>اتصل بنا</title>
+<title>اتصل بنا - Roblox</title>
 
 <style>
 body {
@@ -14,9 +14,50 @@ body {
     padding: 0;
 }
 
+header {
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+}
+
+header .logo img {
+    height: 35px;
+    margin-right: 10px;
+}
+
+header .search-bar input {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+header .create-btn {
+    background-color: #0073e6;
+    color: #fff;
+    border: none;
+    padding: 7px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+header .create-btn:hover {
+    background-color: #005bb5;
+}
+
 .container {
     max-width: 500px;
-    margin: 50px auto;
+    margin: 30px auto;
     background-color: #fff;
     padding: 30px;
     border-radius: 10px;
@@ -62,6 +103,18 @@ button:hover {
 </style>
 </head>
 <body>
+
+<!-- شريط روبلوكس -->
+<header>
+    <div class="logo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Roblox_Logo_2022.svg" alt="Roblox Logo">
+        <span>Roblox</span>
+    </div>
+    <div class="search-bar">
+        <input type="text" placeholder="ابحث">
+    </div>
+    <button class="create-btn">إنشاء</button>
+</header>
 
 <div class="container">
 <h2>اتصل بنا</h2>
