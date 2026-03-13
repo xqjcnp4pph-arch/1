@@ -14,6 +14,16 @@ body {
     padding: 0;
 }
 
+/* الصورة في أقصى اليسار أعلى الصفحة */
+.top-left-logo {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    width: 80px; /* حجم الشعار */
+    height: auto;
+    z-index: 1000;
+}
+
 .container {
     max-width: 500px;
     margin: 50px auto;
@@ -62,6 +72,9 @@ button:hover {
 </style>
 </head>
 <body>
+
+<!-- شعار Roblox -->
+<img src="https://www.roblox.com/assets/images/roblox_logo.png" alt="Roblox Logo" class="top-left-logo">
 
 <div class="container">
 <h2>الدعم الفني الخاص Roblox</h2>
